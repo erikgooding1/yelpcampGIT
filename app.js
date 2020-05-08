@@ -15,6 +15,18 @@ var express 				= require("express"),
 var commentRoutes = require("./routes/comments"),
 	campgroundRoutes = require("./routes/campgrounds"),
 	indexRoutes = require("./routes/index");
+
+console.log(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL,  {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true
+}).then(() => {
+	console.log('Connected to DB');
+}).catch(err => {
+	console.log("ERROR: ", err.message);
+});;
+/*
 mongoose.connect("mongodb+srv://eg5473:26Xjq637!@cluster0-vqcki.mongodb.net/test?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
@@ -24,6 +36,7 @@ mongoose.connect("mongodb+srv://eg5473:26Xjq637!@cluster0-vqcki.mongodb.net/test
 }).catch(err => {
 	console.log("ERROR: ", err.message);
 });
+*/
 
 // mongoose.connect("mongodb://localhost:27017/yelp_camp_v11", {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
