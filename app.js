@@ -35,7 +35,8 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 // seed the database
-// seedDB();
+seedDB();
+// test comment
 
 // Passport Config
 app.use(require("express-session")({
